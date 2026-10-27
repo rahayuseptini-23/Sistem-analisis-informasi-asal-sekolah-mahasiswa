@@ -1,0 +1,25 @@
+{
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "PG local",
+            "database": "database_asalsekolah",
+            "username": "postgres",
+            "password": "gilang1232"
+        },
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "database": "dbasalsekolah",
+            "name": "dbasalsekolah",
+            "username": "postgres"
+        }
+    ]
+}
