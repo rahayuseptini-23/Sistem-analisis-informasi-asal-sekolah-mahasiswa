@@ -143,6 +143,24 @@ app.delete('/api/mahasiswa/:id', async (req, res) => {
   }
 });
 
+// 8. POST: Tambah Data Asal Sekolah Baru (Tambahan agar Thunder Client tidak 404)
+app.post('/api/asal-sekolah', async (req, res) => {
+  try {
+    const { nama_sekolah, jenis_sekolah, kabupaten } = req.body;
+    const newSekolah = await pool.query(
+      'INSERT INTO asal_sekolah (nama_sekolah, jenis_sekolah, kabupaten) VALUES ($1, $2, $3) RETURNING *',
+      [nama_sekolah, jenis_sekolah, kabupaten]
+    );
+    res.status(201).json({
+      message: 'Data asal sekolah berhasil disimpan',
+      data: newSekolah.rows[0]
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: 'Server Error / Gagal menyimpan data sekolah' });
+  }
+});
+
 // Jalankan Server
 app.listen(port, () => {
   console.log(`Server Ruang TI C is running on http://localhost:${port}`);
